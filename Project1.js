@@ -247,3 +247,137 @@ async function inbuiltPromise() {
 }
 
 inbuiltPromise()
+
+//call, apply and bind
+
+let obj1={
+    name:"Aman Agarwal",
+    email:'aman.a.agarwal@ericsson.com',
+//     print:function(){
+//         console.log(`name:${this.name} and email:${this.email}`)
+//     }
+}
+
+function print(hometown, state){
+    console.log(`name:${this.name} and email:$${this.email} lives in ${hometown} which is located in ${state}`)
+}
+
+let obj2={
+    name:"Girdhar Gopal",
+    email:'Girdhar.gopal@lordofuniverse.com'
+}
+
+print.call(obj2,"Vrindvan","Uttar Pradesh")
+print.apply(obj2,["Vrindvan","Uttar Pradesh"])
+
+let res=print.bind(obj1,"Kanpur","Uttar Pradesh")
+console.log(res)
+res()
+
+
+let array=['Aman','Abhay','Salil','Nitesh','Devesh']
+let obj3={
+    name:"Aman",
+    city:"Melbourne",
+    getIntro:function(){
+        console.log(`Name:${this.name} lives in ${Kanpur}`)
+    }
+}
+
+
+function addNumber(number){
+    if(number<=0){
+        return 0;
+    }
+
+    else{
+        return number+addNumber(number-1)
+    }
+}
+
+let addResult=addNumber(4)
+console.log(addResult)
+
+function multiplyby5(num){
+    return num*5
+}
+
+multiplyby5.power=2
+
+console.log(multiplyby5(5))
+console.log(multiplyby5.power)
+console.log(multiplyby5.prototype)
+
+function createuser(username,score){
+    this.username=username
+    this.score=score
+}
+
+createuser.prototype.increment=function(){
+    this.score++
+}
+
+createuser.prototype.printme=function(){
+    console.log(`${this.username} score is ${this.score}`)
+}
+
+let tea=new createuser("tea",500)
+let coffee=new createuser("coffee",450)
+
+tea.printme()
+coffee.printme()
+
+
+const hero=["Iron Man","Spider Man","Superman"]
+
+const superpower={
+    Ironman:"Armor",
+    SpiderMan:"Sling",
+    Superman:"Heat Vision"
+}
+
+Object.prototype.show=function(){
+    console.log("Power is shown to all the employees")
+}
+
+Array.prototype.anothFunc=function(){
+    console.log("Specifically for the")
+}
+
+superpower.show()
+hero.show()
+
+//inheritance
+
+const user2={
+    name:"Aman Agrwal",
+    email:"amanagarwal016@gmail.com"
+}
+
+const Teacher={
+    makeVideo:true
+}
+
+const TeachingSupport={
+    isAvailable:true
+}
+
+const TASupport={
+    makeAssignment:'JS Assignment',
+    fullTime:true,
+    __proto__:TeachingSupport
+}
+
+Teacher.__proto__=user2
+
+//modern Syntax
+
+Object.setPrototypeOf(TeachingSupport,Teacher)
+
+let anothUser="Frotuner Aman Agarwal"
+
+String.prototype.trueLenth=function(){
+    console.log(`${this}`)
+    console.log(`${this.name}`)
+    console.log(`True Length ${this.trim().length}`)
+}
