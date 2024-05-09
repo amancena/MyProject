@@ -74,20 +74,95 @@
 // })
 
 
-let hero = {
-    powerLevel: 99,
-    getPower(){
-      return this.powerLevel;
-    }
+// let hero = {
+//     powerLevel: 99,
+//     getPower(){
+//       return this.powerLevel;
+//     }
+//   }
+  
+//   let getPower = hero.getPower;
+
+//   let power=getPower(25)
+//   console.log(power)
+
+//   console.log(getPower)
+  
+  // let hero2 = {powerLevel:42};
+  // console.log(getPower());
+  // console.log(getPower.apply(hero2));
+
+
+//   const a=function(){
+//     console.log(this)
+
+//     const b={
+//       func1:function(){
+//       console.log(this)
+//     }
+//   }
+
+//   const c={
+//     func2:function(){
+//       console.log(this)
+//     }
+//   }
+
+//   b.func1()
+//   c.func2()
+
+// }
+
+// a();
+
+
+
+
+
+
+(function(a){
+  return (function(){
+    console.log(a);
+    a = 23;
+  })()
+})(45);
+
+// Code 2
+
+// Each time bigFunc is called, an array of size 700 is being created,
+// Modify the code so that we don't create the same array again and again
+
+function bigFunc(element){
+  let newArray = new Array(700).fill('♥');
+  return newArray[element];
+}
+
+console.log(bigFunc(599)); // Array is created
+console.log(bigFunc(670)); // Array is created again
+
+
+const b = {
+  name:"Aman",
+  f: function(){
+    var self = this;
+    console.log(this.name); //Aman
+    (function(){
+      console.log(this.name);
+      console.log(self.name);
+    })();
   }
-  
-  let getPower = hero.getPower;
+}
+b.f();
 
-  let power=getPower(25)
-  console.log(power)
 
-  //console.log(getPower)
+var c=300
+if(true){
+let a=10
+const b=20
+var c=30
+}
+
+console.log(a)
+console.log(b)
+console.log(c)
   
-  //let hero2 = {powerLevel:42};
-  //console.log(getPower());
-  //console.log(getPower.apply(hero2));
